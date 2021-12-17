@@ -1,9 +1,10 @@
-import java.nio.file.Files
-import java.nio.file.StandardCopyOption
-
 plugins {
     id 'java'
     id "com.github.johnrengelman.shadow" version "6.1.0"
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
 }
 
 group = 'lab.kunmc.net'
