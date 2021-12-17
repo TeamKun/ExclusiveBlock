@@ -1,0 +1,4 @@
+name: ExclusiveBlock
+version: '${version}'
+main: lab.kunmc.net.exclusiveblock.Exclusiveblock
+api-version: 1.16
