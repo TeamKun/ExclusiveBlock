@@ -1,6 +1,5 @@
 package lab.kunmc.net.exclusiveblock.game;
 
-import lab.kunmc.net.exclusiveblock.constant.GameMode;
 import lab.kunmc.net.exclusiveblock.controller.CommandResult;
 
 public class GameManager {
@@ -8,14 +7,15 @@ public class GameManager {
   private static GameMode currentMode = GameMode.SOLO;
   private static boolean isEnable;
 
-  public static boolean setMode(GameMode mode) {
-    boolean isSucceed = currentMode == mode;
+  public static CommandResult setMode(GameMode mode) {
+    boolean isSucceed = currentMode != mode;
 
-    if (isSucceed) {
-      currentMode = mode;
+    if (!isSucceed) {
+      return new CommandResult(false, "すでに" + mode.name().toLowerCase() + "モードです");
     }
 
-    return isSucceed;
+    currentMode = mode;
+    return new CommandResult(true, mode.name().toLowerCase() + "モードに切り替えました");
   }
 
   public static CommandResult enable() {
@@ -34,7 +34,15 @@ public class GameManager {
     return new CommandResult(true, "プラグインを無効化しました");
   }
 
+  public static GameMode currentMode() {
+    return currentMode;
+  }
+
   private static void toggleState() {
     isEnable = !isEnable;
+  }
+  
+  public static boolean isEnable() {
+    return isEnable;
   }
 }
