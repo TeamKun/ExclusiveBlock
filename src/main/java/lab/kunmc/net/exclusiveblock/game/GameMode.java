@@ -68,11 +68,10 @@ public enum GameMode {
       return false;
     }
 
-    UUID meta = (UUID) block.getMetadata(Settings.PLACER_TEAM_KEY).get(0).value();
-    if (!meta.equals(Teams.getAffiliatedTeam(player))) {
+    String teamName = (String) block.getMetadata(Settings.PLACER_TEAM_KEY).get(0).value();
+    if (!teamName.equals(Teams.getAffiliatedTeam(player).getName())) {
       return false;
     }
-
     return true;
   }
 }

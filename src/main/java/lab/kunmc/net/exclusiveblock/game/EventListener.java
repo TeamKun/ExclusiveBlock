@@ -45,6 +45,7 @@ public class EventListener implements Listener {
     }
 
     block.setMetadata(Settings.PLACER_TEAM_KEY,
-        new FixedMetadataValue(ExclusiveBlock.plugin, team));
+        new FixedMetadataValue(ExclusiveBlock.plugin, team.getName()));
+
   }
 }
