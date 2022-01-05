@@ -4,6 +4,7 @@ import java.util.UUID;
 import lab.kunmc.net.exclusiveblock.constant.Settings;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
+import org.bukkit.scoreboard.Team;
 
 public enum GameMode {
   SOLO(((player, block) -> {
@@ -51,25 +52,32 @@ public enum GameMode {
   }
 
   private static boolean isMatchSoloPlacer(Player player, Block block) {
-    if (block.getMetadata(Settings.PLACER_KEY).isEmpty()) {
+    try {
+      if (block.getMetadata(Settings.PLACER_KEY).isEmpty()) {
+        return false;
+      }
+      UUID meta = (UUID) block.getMetadata(Settings.PLACER_KEY).get(0).value();
+      if (!meta.equals(player.getUniqueId())) {
+        return false;
+      }
+      return true;
+    } catch (Exception e) {
       return false;
     }
-
-    UUID meta = (UUID) block.getMetadata(Settings.PLACER_KEY).get(0).value();
-    if (!meta.equals(player.getUniqueId())) {
-      return false;
-    }
-
-    return true;
   }
 
   private static boolean isMatchTeamPlacer(Player player, Block block) {
+    Team playerTeam = Teams.getAffiliatedTeam(player);
+    if (playerTeam == null) {
+      return false;
+    }
+
     if (block.getMetadata(Settings.PLACER_TEAM_KEY).isEmpty()) {
       return false;
     }
 
-    String teamName = (String) block.getMetadata(Settings.PLACER_TEAM_KEY).get(0).value();
-    if (!teamName.equals(Teams.getAffiliatedTeam(player).getName())) {
+    String blockTeamName = (String) block.getMetadata(Settings.PLACER_TEAM_KEY).get(0).value();
+    if (!blockTeamName.equals(playerTeam.getName())) {
       return false;
     }
     return true;
