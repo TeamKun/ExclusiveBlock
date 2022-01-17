@@ -1,5 +1,6 @@
 package lab.kunmc.net.exclusiveblock.game;
 
+import lab.kunmc.net.exclusiveblock.ExclusiveBlock;
 import org.bukkit.Bukkit;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -18,7 +19,12 @@ public class KillTask extends BukkitRunnable {
 
       // 死亡判定
       if (!GameManager.currentMode().isSafe(player, steppingBlock)) {
-        player.damage(1000);
+        new BukkitRunnable() {
+          @Override
+          public void run() {
+            player.damage(1000);
+          }
+        }.runTask(ExclusiveBlock.plugin);
         continue;
       }
     }
