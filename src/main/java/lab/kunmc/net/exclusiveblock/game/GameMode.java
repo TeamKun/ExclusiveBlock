@@ -52,18 +52,14 @@ public enum GameMode {
   }
 
   private static boolean isMatchSoloPlacer(Player player, Block block) {
-    try {
-      if (block.getMetadata(Settings.PLACER_KEY).isEmpty()) {
-        return false;
-      }
-      UUID meta = (UUID) block.getMetadata(Settings.PLACER_KEY).get(0).value();
-      if (!meta.equals(player.getUniqueId())) {
-        return false;
-      }
-      return true;
-    } catch (Exception e) {
+    if (block.getMetadata(Settings.PLACER_KEY).isEmpty()) {
       return false;
     }
+    UUID meta = (UUID) block.getMetadata(Settings.PLACER_KEY).get(0).value();
+    if (!meta.equals(player.getUniqueId())) {
+      return false;
+    }
+    return true;
   }
 
   private static boolean isMatchTeamPlacer(Player player, Block block) {

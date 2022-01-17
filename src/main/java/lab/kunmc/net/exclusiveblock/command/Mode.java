@@ -12,11 +12,11 @@ public class Mode extends CommandBase {
   public Mode(@NotNull CommandEnum commandEnum) {
     super(commandEnum);
     usage(usageBuilder -> {
-      usageBuilder.textArgument("mode", suggestionBuilder -> {
+      usageBuilder.stringArgument("mode", suggestionBuilder -> {
         for (GameMode mode : GameMode.values()) {
           suggestionBuilder.suggest(mode.name().toLowerCase(Locale.ROOT));
         }
-      });
+      }, null);
     });
   }
 
