@@ -5,15 +5,15 @@ import lab.kunmc.net.exclusiveblock.command.Main;
 import lab.kunmc.net.exclusiveblock.game.EventListener;
 import net.kunmc.lab.configlib.command.ConfigCommandBuilder;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.scheduler.BukkitTask;
 
 public final class ExclusiveBlock extends JavaPlugin {
 
   public static ExclusiveBlock plugin;
   public static Config config;
 
-  public static BukkitRunnable killTask;
-  public static BukkitRunnable displayTask;
+  public static BukkitTask killTask;
+  public static BukkitTask displayTask;
 
   @Override
   public void onEnable() {

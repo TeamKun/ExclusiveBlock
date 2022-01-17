@@ -22,7 +22,8 @@ public class Enable extends CommandBase {
     ExclusiveBlock plugin = ExclusiveBlock.plugin;
     Config config = ExclusiveBlock.config;
 
-    new KillTask().runTaskTimer(plugin, 0, config.killTaskTick.value());
-    new DisplayTask().runTaskTimerAsynchronously(plugin, 0, config.displayTaskTick.value());
+    ExclusiveBlock.killTask = new KillTask().runTaskTimer(plugin, 0, config.killTaskTick.value());
+    ExclusiveBlock.displayTask = new DisplayTask().runTaskTimerAsynchronously(plugin, 0,
+        config.displayTaskTick.value());
   }
 }
