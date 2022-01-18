@@ -1,4 +1,4 @@
-package lab.kunmc.net.exclusiveblock.command;
+package lab.kunmc.net.exclusiveblock.constant.command;
 
 import dev.kotx.flylib.command.CommandContext;
 import lab.kunmc.net.exclusiveblock.ExclusiveBlock;

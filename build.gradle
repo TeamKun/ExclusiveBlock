@@ -1,3 +1,5 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
 plugins {
     id 'java'
     id "com.github.johnrengelman.shadow" version "6.1.0"
@@ -8,7 +10,7 @@ tasks.withType(JavaCompile) {
 }
 
 group = 'lab.kunmc.net'
-version = '1.4'
+version = '1.5'
 
 repositories {
     mavenCentral()
@@ -21,9 +23,6 @@ repositories {
         url = 'https://oss.sonatype.org/content/groups/public/'
     }
 }
-
-sourceCompatibility = '1.8'
-targetCompatibility = '1.8'
 
 repositories {
     mavenCentral()
@@ -63,4 +62,13 @@ task copyToServer(type: Copy) {
 
 task buildAndCopy(group: "build") {
     dependsOn build, copyToServer
+}
+
+processResources {
+    filteringCharset "UTF-8"
+    filesMatching("**/plugin.yml") {
+        filter(ReplaceTokens, tokens: [
+                "version": version,
+        ])
+    }
 }

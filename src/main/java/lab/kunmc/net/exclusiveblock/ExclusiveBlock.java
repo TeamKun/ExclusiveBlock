@@ -1,7 +1,7 @@
 package lab.kunmc.net.exclusiveblock;
 
 import dev.kotx.flylib.FlyLib;
-import lab.kunmc.net.exclusiveblock.command.Main;
+import lab.kunmc.net.exclusiveblock.constant.command.Main;
 import lab.kunmc.net.exclusiveblock.game.EventListener;
 import net.kunmc.lab.configlib.command.ConfigCommandBuilder;
 import org.bukkit.plugin.java.JavaPlugin;

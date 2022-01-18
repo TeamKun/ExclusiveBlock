@@ -1,4 +1,4 @@
-package lab.kunmc.net.exclusiveblock.command;
+package lab.kunmc.net.exclusiveblock.constant.command;
 
 import lab.kunmc.net.exclusiveblock.constant.CommandEnum;
 import net.kunmc.lab.configlib.command.ConfigCommand;
