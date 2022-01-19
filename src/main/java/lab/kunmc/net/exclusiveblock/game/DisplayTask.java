@@ -12,7 +12,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.RayTraceResult;
 
-public class GameTask extends BukkitRunnable {
+public class DisplayTask extends BukkitRunnable {
 
   @Override
   public void run() {
@@ -21,18 +21,9 @@ public class GameTask extends BukkitRunnable {
     }
 
     for (Player player : Bukkit.getOnlinePlayers()) {
-      Block steppingBlock = player.getLocation().add(0, -1, 0).getBlock();
-
-      // 死亡判定
-      if (!GameManager.currentMode().isSafe(player, steppingBlock)) {
-        player.damage(1000);
-        continue;
-      }
-
-      // パーティクル表示
       RayTraceResult rayTraceResult = player.rayTraceBlocks(8);
       if (rayTraceResult == null) {
-        return;
+        continue;
       }
 
       Block rayTraceBlock = rayTraceResult.getHitBlock();

@@ -1,3 +1,5 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
 plugins {
     id 'java'
     id "com.github.johnrengelman.shadow" version "6.1.0"
@@ -8,7 +10,7 @@ tasks.withType(JavaCompile) {
 }
 
 group = 'lab.kunmc.net'
-version = '1.1'
+version = '1.6'
 
 repositories {
     mavenCentral()
@@ -49,10 +51,6 @@ dependencies {
     implementation 'com.github.TeamKun:ConfigLib:0.3.8'
 }
 
-shadowJar {
-    archiveFileName = "${rootProject.name}-${version}.jar"
-}
-
 tasks.build.dependsOn tasks.shadowJar
 
 task copyToServer(type: Copy) {
@@ -63,4 +61,17 @@ task copyToServer(type: Copy) {
 
 task buildAndCopy(group: "build") {
     dependsOn build, copyToServer
+}
+
+processResources {
+    filteringCharset "UTF-8"
+    filesMatching("**/plugin.yml") {
+        filter(ReplaceTokens, tokens: [
+                "version": version,
+        ])
+    }
+}
+
+shadowJar {
+    archiveFileName = "${rootProject.name}-${version}.jar"
 }

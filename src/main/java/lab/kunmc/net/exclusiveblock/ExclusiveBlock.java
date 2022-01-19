@@ -4,8 +4,9 @@ import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.ProtocolManager;
 import dev.kotx.flylib.FlyLib;
 import lab.kunmc.net.exclusiveblock.command.Main;
+import lab.kunmc.net.exclusiveblock.game.DisplayTask;
 import lab.kunmc.net.exclusiveblock.game.EventListener;
-import lab.kunmc.net.exclusiveblock.game.GameTask;
+import lab.kunmc.net.exclusiveblock.game.KillTask;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class ExclusiveBlock extends JavaPlugin {
@@ -22,7 +23,8 @@ public final class ExclusiveBlock extends JavaPlugin {
       builder.command(new Main());
     });
     getServer().getPluginManager().registerEvents(new EventListener(), this);
-    new GameTask().runTaskTimer(this, 0, 1);
+    new KillTask().runTaskTimerAsynchronously(this, 0, 1);
+    new DisplayTask().runTaskTimerAsynchronously(this, 0, 1);
   }
 
   @Override

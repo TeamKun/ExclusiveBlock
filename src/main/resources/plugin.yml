@@ -1,5 +1,5 @@
 name: ExclusiveBlock
-version: '${version}'
+version: @version@
 main: lab.kunmc.net.exclusiveblock.ExclusiveBlock
 api-version: 1.16
 depend: [ ProtocolLib ]
