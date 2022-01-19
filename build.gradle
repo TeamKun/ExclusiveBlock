@@ -10,11 +10,8 @@ tasks.withType(JavaCompile) {
 }
 
 group = 'lab.kunmc.net'
-<<<<<<< HEAD
 version = '1.5'
-=======
 version = '1.6'
->>>>>>> bugfix
 
 repositories {
     mavenCentral()
@@ -71,11 +68,8 @@ processResources {
                 "version": version,
         ])
     }
-<<<<<<< HEAD
-=======
 }
 
 shadowJar {
     archiveFileName = "${rootProject.name}-${version}.jar"
->>>>>>> bugfix
 }
