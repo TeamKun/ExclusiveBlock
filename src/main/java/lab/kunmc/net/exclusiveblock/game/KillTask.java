@@ -18,18 +18,20 @@ public class KillTask extends BukkitRunnable {
       Block steppingBlock = player.getLocation().add(0, -1, 0).getBlock();
 
       // 死亡判定
-      if (!GameManager.currentMode().isSafe(player, steppingBlock)) {
-        new BukkitRunnable() {
-          @Override
-          public void run() {
-            player.damage(1000);
-          }
-        }.runTask(ExclusiveBlock.plugin);
-<<<<<<< HEAD
+      if (GameManager.currentMode().isSafe(player, steppingBlock)) {
         continue;
-=======
->>>>>>> bugfix
       }
+
+      if (player.isDead()) {
+        continue;
+      }
+      new BukkitRunnable() {
+        @Override
+        public void run() {
+          player.damage(1000);
+          Bukkit.getLogger().info(steppingBlock.getBlockData().getMaterial().name());
+        }
+      }.runTask(ExclusiveBlock.plugin);
     }
   }
 }
