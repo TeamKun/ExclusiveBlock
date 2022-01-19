@@ -25,7 +25,10 @@ public class KillTask extends BukkitRunnable {
             player.damage(1000);
           }
         }.runTask(ExclusiveBlock.plugin);
+<<<<<<< HEAD
         continue;
+=======
+>>>>>>> bugfix
       }
     }
   }
