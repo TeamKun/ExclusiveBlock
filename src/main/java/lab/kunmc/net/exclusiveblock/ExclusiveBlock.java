@@ -34,6 +34,7 @@ public final class ExclusiveBlock extends JavaPlugin {
     getServer().getPluginManager().registerEvents(new EventListener(), this);
     new KillTask().runTaskTimerAsynchronously(this, 0, 1);
     new DisplayTask().runTaskTimerAsynchronously(this, 0, 1);
+
   }
 
   @Override

@@ -4,7 +4,7 @@ import lab.kunmc.net.exclusiveblock.controller.CommandResult;
 
 public class GameManager {
 
-  private static GameMode currentMode = GameMode.SOLO;
+  private static GameMode currentMode = GameMode.TEAM;
   private static boolean isEnable;
 
   public static CommandResult setMode(GameMode mode) {
@@ -41,7 +41,7 @@ public class GameManager {
   private static void toggleState() {
     isEnable = !isEnable;
   }
-  
+
   public static boolean isEnable() {
     return isEnable;
   }

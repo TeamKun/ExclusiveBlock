@@ -29,7 +29,6 @@ public class KillTask extends BukkitRunnable {
         @Override
         public void run() {
           player.damage(1000);
-          Bukkit.getLogger().info(steppingBlock.getBlockData().getMaterial().name());
         }
       }.runTask(ExclusiveBlock.plugin);
     }
